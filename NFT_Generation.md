@@ -16,7 +16,7 @@
         "You laughed when I said I would repay you, said the Mouse.",
         "Now you see that even a Mouse can help a Lion."
         
-![The Lion and the Mouse](./Images/the_lion_and_the_mouse.png)
+![The Lion and the Mouse](./images/the_lion_and_the_mouse.png)
 
 ---
  ## Title: The Plane Tress
@@ -30,7 +30,7 @@
         "You lie here in my cooling shade, and yet you say I am useless!",
         "Thus ungratefully, O Jupiter, do men receive their blessings!"
         
-![The PLane Tree](./Images/the_plane_tree.png)
+![The PLane Tree](./images/the_plane_tree.png)
 
 ---
 
@@ -52,5 +52,5 @@
         "How now!, cried Jupiter Are you not yet content?",
         "You have what you asked for and so you have only yourselves to blame for your misfortunes."
 
-![The Frogs Who Wished for a King](./Images/frog_king.png)
+![The Frogs Who Wished for a King](./images/frog_king.png)
       
