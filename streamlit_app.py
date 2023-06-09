@@ -7,21 +7,36 @@ import json
 import os
 from PIL import Image
 from pathlib import Path
+from dotenv import load_dotenv
+from pinata import pin_file_to_ipfs, pin_json_to_ipfs, convert_data_to_json
 
 # Connect to Ethereum node
 web3 = Web3(Web3.HTTPProvider('http://127.0.0.1:7545'))
 
-# Contract address and ABI
-contract_address = '0xe242c4Bb7EE83C615Ef53b49c42d33937BF21Ef7'  # replace with your contract address
-    
-# read file with ABI json
-with open('json/contract_ABI.json', 'r') as myfile:
-    contract_json = myfile.read()
-    
-contract_abi = json.loads(contract_json)
+################################################################################
+# Load_Contract Function
+################################################################################
+def load_contract():
 
-# Create contract instance
-contract = web3.eth.contract(address=contract_address, abi=contract_abi)
+    contract_address = os.getenv("SMART_CONTRACT_ADDRESS") #'0x4a46A8464DE04b9Ae6310B77792F5088b89993Dc' 
+    
+    # read file with ABI json
+    with open('json/contract_ABI.json', 'r') as myfile:
+        contract_json = myfile.read()
+    
+    contract_abi = json.loads(contract_json)
+
+    # Create contract instance
+    contract = web3.eth.contract(address=contract_address, abi=contract_abi)
+    
+    return contract
+
+# Load the contract
+contract = load_contract()
+
+###############################################################################
+# Helper functions to pin files and json to Pinata
+################################################################################
 
 # Set Streamlit theme
 st.set_page_config(layout="wide", page_title="Auction House NFTs")
@@ -33,10 +48,10 @@ st.title("Auction House NFTs")
 token_id = st.number_input('Enter token ID', min_value=1, step=1)
 
 # Get image and fable
-image_path = f"nft_art_bidding/images/{token_id}.png"  # replace with your actual path
-fable_path = f"nft_art_bidding/Fable_Fiction.ipynb/{token_id}.ipynb"  # replace with your actual path
+image_path = Path("Images/frog_king_1.png")# replace with your actual path
+#fable_path = f"nft_art_bidding/Fable_Fiction.ipynb/{token_id}.ipynb"  # replace with your actual path
 
-if os.path.exists(image_path) and os.path.exists(fable_path):
+if os.path.exists(image_path): #and os.path.exists(fable_path):
     # Display image
     image = Image.open(image_path)
     st.image(image, caption=f"Token ID: {token_id}", use_column_width=True)
