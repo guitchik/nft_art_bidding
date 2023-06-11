@@ -47,14 +47,18 @@
         "type": "uint256"
       },
       {
+        "name": "forceEnd",
+        "type": "bool"
+      },
+      {
         "name": "owner",
         "type": "address"
       }
     ],
     "name": "endAuction",
     "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
+    "payable": true,
+    "stateMutability": "payable",
     "type": "function"
   },
   {
@@ -177,6 +181,28 @@
     "outputs": [],
     "payable": false,
     "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "newOwner",
+        "type": "address"
+      },
+      {
+        "name": "oldOwner",
+        "type": "address"
+      },
+      {
+        "name": "tokenID",
+        "type": "uint256"
+      }
+    ],
+    "name": "sendToken",
+    "outputs": [],
+    "payable": true,
+    "stateMutability": "payable",
     "type": "function"
   },
   {
@@ -369,6 +395,10 @@
       {
         "name": "highestBid",
         "type": "uint256"
+      },
+      {
+        "name": "auction_off",
+        "type": "bool"
       }
     ],
     "payable": false,

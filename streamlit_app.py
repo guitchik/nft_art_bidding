@@ -1,4 +1,4 @@
-# Streamlit app code for Auction House NFTs
+# Streamlit app code for Auction House NFTs and Pinata Helper Functions
 
 import streamlit as st
 from web3 import Web3
@@ -14,11 +14,11 @@ from pinata import pin_file_to_ipfs, pin_json_to_ipfs, convert_data_to_json
 web3 = Web3(Web3.HTTPProvider('http://127.0.0.1:7545'))
 
 ################################################################################
-# Load_Contract Function
+# Load_Contract Function for ABI and Ganache smart contract address
 ################################################################################
 def load_contract():
 
-    contract_address = os.getenv("SMART_CONTRACT_ADDRESS") #'0x4a46A8464DE04b9Ae6310B77792F5088b89993Dc' 
+    contract_address = os.getenv("SMART_CONTRACT_ADDRESS")  
     
     # read file with ABI json
     with open('json/contract_ABI.json', 'r') as myfile:
@@ -36,42 +36,105 @@ contract = load_contract()
 
 ###############################################################################
 # Helper functions to pin files and json to Pinata
+###############################################################################
+
+def pin_bid(artwork_file, selected_artwork_name):
+    # Pin the file to IPFS with Pinata
+    ipfs_file_hash = pin_file_to_ipfs(artwork_file)
+
+    # Build a token metadata file for the artwork
+    token_json = {
+        "name": selected_artwork_name,
+        "image": ipfs_file_hash
+    }
+    json_data = convert_data_to_json(token_json)
+
+    # Pin the json to IPFS with Pinata
+    json_ipfs_hash = pin_json_to_ipfs(json_data)
+
+    return json_ipfs_hash, token_json
+
+
+def pin_bid_report(report_content):
+    json_report = convert_data_to_json(report_content)
+    report_ipfs_hash = pin_json_to_ipfs(json_report)
+    return report_ipfs_hash
+
+################################################################################
+# STREAMLIT CODE FOR FRONTEND!!!
 ################################################################################
 
-# Set Streamlit theme
-st.set_page_config(layout="wide", page_title="Auction House NFTs")
+# Set Streamlit theme and page title
+#st.set_page_config(layout="wide", page_title="Auction House NFTs")
 
-# Title
-st.title("Auction House NFTs")
+# Set Title 
+st.markdown("<h1 style='text-align: center; color: white;'>Auction House NFTs</h1>", unsafe_allow_html=True)
 
-# Token ID
-token_id = st.number_input('Enter token ID', min_value=1, step=1)
+st.markdown("---")
 
-# Get image and fable
-image_path = Path("Images/frog_king_1.png")# replace with your actual path
-#fable_path = f"nft_art_bidding/Fable_Fiction.ipynb/{token_id}.ipynb"  # replace with your actual path
 
-if os.path.exists(image_path): #and os.path.exists(fable_path):
-    # Display image
-    image = Image.open(image_path)
-    st.image(image, caption=f"Token ID: {token_id}", use_column_width=True)
 
-    # Display fable
-    with open(fable_path, 'r') as f:
-        fable = json.load(f)
-    st.markdown(f"## Fable")
-    st.markdown(fable['cells'][0]['source'][0])  # assuming the fable is in the first cell of the notebook
 
-    # Get auction details
-    auction = contract.functions.Auctions(token_id).call()
-    st.markdown(f"## Current Highest Bid: {web3.fromWei(auction[3], 'ether')} ETH")
+# Choose your Favorite Image to Bid On
+st.markdown("## Choose your Favorite Art to Bid On")
 
-    # Calculate time left
-    current_block = web3.eth.blockNumber
-    end_block = auction[1]
-    blocks_left = end_block - current_block
-    # Assuming ~15 seconds per block
-    time_left = blocks_left * 15
-    st.markdown(f"## Time Left: {time.strftime('%H:%M:%S', time.gmtime(time_left))}")
-else:
-    st.markdown("## Invalid token ID or the files do not exist.")
+# Specify the directory where your images are
+image_dir = 'Images'
+
+# List all files in the directory
+image_files = os.listdir(image_dir)
+
+# Remove extensions from file names
+image_names = [os.path.splitext(file)[0] for file in image_files]
+
+# Create a dictionary to map image names to their files
+image_dict = dict()
+for i, image_name in enumerate(image_names):
+    image_dict[image_name] = image_files[i]
+
+# Create a selectbox for the image names
+selected_artwork_name = st.selectbox('Choose an image', image_names)
+
+# Get the corresponding image file
+artwork_file = image_dict[selected_artwork_name]
+
+# Display the selected image
+st.image(os.path.join(image_dir, artwork_file))
+
+st.markdown("---")
+
+
+
+
+# Select Wallet, Bidder's Name, Initial Bid, and Pin artwork to bid"
+st.markdown("## Choose a wallet account to start bidding!")
+
+accounts = web3.eth.accounts
+#tokens = contract.functions.totalSupply().call()
+
+bidder = st.selectbox("Select Account", options=accounts)
+#token_id = st.selectbox("Choose an Art Token ID", list(range(tokens)))
+newbid = st.text_input("Enter your initial bid (in Ether)")
+
+
+if st.button("Start Bidding!"):
+    # Use the `pin_bid` helper function to pin the file to IPFS
+    artwork_ipfs_hash, token_json = pin_bid(artwork_file, selected_artwork_name)
+
+    artwork_uri = f"ipfs://{artwork_ipfs_hash}"
+
+    tx_hash = contract.functions.bidOnAuction(
+        #token_id,
+        bidder,
+        int(newbid),
+        #artwork_uri,
+        #token_json['image']
+    ).transact({'from': bidder, 'gas': 1000000})
+    receipt = web3.eth.waitForTransactionReceipt(tx_hash)
+    st.write("Transaction receipt mined:")
+    st.write(dict(receipt))
+    #st.write("You can view the pinned metadata file with the following IPFS Gateway Link")
+    #st.markdown(f"[Artwork IPFS Gateway Link](https://ipfs.io/ipfs/{artwork_ipfs_hash})")
+    #st.markdown(f"[Artwork IPFS Image Link](https://ipfs.io/ipfs/{token_json['image']})")
+
+st.markdown("---")
