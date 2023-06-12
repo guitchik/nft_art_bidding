@@ -151,7 +151,7 @@ Our developed DApp on the Ethereum blockchain showcases the power of blockchain 
 
 #### Video Demonstration (Full Functionality of Solidity Code)
 
-[![Remix Demo](Images/screen1.png)](Remix_Demo_6.11.23.mp4)
+[![Remix Demo](Images/screen1.png)](Images/Remix_Demo_6.11.23.mp4)
 
 ## Appendix B
 
