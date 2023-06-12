@@ -36,7 +36,7 @@ Artists have the ability to mint tokens, creating a limited supply of unique dig
 
 ##### ETSI4 Contract Details
 
-![Etsy4 Contract](Images/Code_etsy4_contract.png)
+![Etsy4 Contract](Images/Code_Etsy4_contract.png)
 
 ### Front end and AI generated NFTs
 
