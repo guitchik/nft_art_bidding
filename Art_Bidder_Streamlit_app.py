@@ -79,7 +79,7 @@ st.markdown("---")
 st.markdown("## Choose your Favorite Art to Bid On")
 
 # Specify the directory where your images are
-image_dir = 'Images'
+image_dir = 'Images2'
 
 # List all files in the directory
 image_files = os.listdir(image_dir)

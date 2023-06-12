@@ -1,8 +1,6 @@
 # Project 3: CryptoFables: NFTs and Blockchain Transforming Artistic Narratives
 
-#### Submitted by: Ramgopal Gollakota, Taylor Little, Tim, Celeste Terrell and Timothy Prost
-
-
+#### Submitted by: Ramgopal Gollakota, Taylor Little, Celeste Terrell, and Timothy Prost
 
 ## Executive summary
 
@@ -24,8 +22,6 @@ We're building an efficient marketplace that eradicates forgeries and guarantees
 
 By leveraging AI for NFT generation, we showcase the convergence of technology fields, driving innovation and creating unique value. Our marketplace enables artists to explore the creative possibilities of AI while providing a trusted platform for art enthusiasts to discover and acquire these captivating digital creations. This integration of cutting-edge technologies revolutionizes the art industry, bridging the gap between art and technology and opening up exciting avenues for artistic expression and appreciation.
 
-
-
 ### Code overview and design
 
 We have incorporated features from Open Zeppelin's ERC721Full standard, which serves as the foundation of our platform. This integration empowers users to seamlessly register their artwork, set an appraisal value, mint unique tokens, initiate auctions, conclude auctions, and transfer tokens and funds to the highest bidder.
@@ -34,19 +30,17 @@ Our user flow begins with artists registering their artwork on our platform, pro
 
 Artists have the ability to mint tokens, creating a limited supply of unique digital assets tied to their artwork. This process ensures the scarcity and exclusivity of each token, adding value to the artwork and enhancing its collectability.
 
-
-
 ##### User Flows
 
 ![Etsy4 Contract](Images/Code_user_flows.png)
 
-##### ETSI4 Contract Details 
+##### ETSI4 Contract Details
 
 ![Etsy4 Contract](Images/Code_etsy4_contract.png)
 
 ### Front end and AI generated NFTs
 
-#### 
+####
 
 #### Streamlit
 
@@ -66,17 +60,13 @@ To ensure the immutability and availability of the AI-generated artwork, we util
 
 Furthermore, we tokenize the artwork by minting an NFT on the Ethereum blockchain. We utilize the IPFS hash obtained from Pinata to associate the artwork with the NFT. The details of the artwork and its association with the NFT are stored in JSON format, providing a comprehensive record of the artwork's provenance and ownership. Additional details are in Appendix B.
 
-
-
 ### Technical components of our Prototype
-
-
 
 ##### Blockchain related
 
 1.Ethereum Blockchain: Smart contract platform
 
-2.Etsy3 Smart Contract: Art registration & transactions
+2.Etsy4 Smart Contract: Art registration & transactions
 
 3.Solidity Code: Contract language
 
@@ -101,8 +91,6 @@ Furthermore, we tokenize the artwork by minting an NFT on the Ethereum blockchai
 1.Streamlit: Python-based interface
 
 2.Generative AI API: Unique art creation
-
-
 
 ### Development and Testing steps
 
@@ -140,20 +128,15 @@ Our project exemplifies the immense potential of blockchain technology in the fi
 
 Moreover, our project emphasizes the significance of trust and security in fintech applications. By leveraging the blockchain environment, we have established a reliable and transparent framework for conducting transactions and ensuring the integrity of the auction process. This further strengthens the trust between buyers and sellers, enhancing the overall user experience and instilling confidence in the fintech ecosystem.
 
-
-
 ### NEXT STEPS
 
 Our developed DApp on the Ethereum blockchain showcases the power of blockchain smart contracts for NFT auctions. This success opens up exciting possibilities for the future. One potential avenue is to expand the concept and launch a full-fledged NFT marketplace. By incorporating additional auction features and leveraging the strength of blockchain technology, we can create a dynamic and thriving marketplace for artists and collectors.
 
 ---
 
-
 ## Appendix A
 
 ### Screenshots of Demo
-
-
 
 ![Screen1](Images/Screen1.png)
 ![Screen2](Images/Screen2.png)
@@ -166,11 +149,9 @@ Our developed DApp on the Ethereum blockchain showcases the power of blockchain 
 ![Screen9](Images/Screen9.png)
 ![Screen10](Images/Screen10.png)
 
+#### Video Demonstration (Full Functionality of Solidity Code)
 
-
-#### Video
-
-
+[![Remix Demo](Images/screen1.png)](Remix_Demo_6.11.23.mp4)
 
 ## Appendix B
 
@@ -189,11 +170,11 @@ QmeNJRLBVuCDNxwgfjLoJXsLCZhVrZ88tKaJKzyrgtEw4S
 ---
 
 the_plane_tree.json
-6/5/2023 783 B   
+6/5/2023 783 B  
 QmXiyCnrRcRCWyUCeripwA9nZtV4fm6yFqhoPNV3qPbQsQ
 
 the plane tree_1.png
-6/5/2023 2.20 MB   
+6/5/2023 2.20 MB  
 QmWc8MxjZ1Pa5TrmuL24NaKgnCCDcGf4FjKFoKtrGBQeRa
 
 ---
@@ -203,13 +184,13 @@ the_travelers_and_the_sea.json
 QmaESthErSXtPz2uCs1bHq5tMR1vMgEew3wbWSb3mMoVFB
 
 travelers_of_the_sea_1.png
-6/5/2023 1.90 MB   
+6/5/2023 1.90 MB  
 QmcKTNx6GvwY2J1M8vLZsApPQfqsjZYRqndBU8zaoDrASa
 
 ---
 
 the_lion_and_the_mouse.json
-6/1/2023 1.23 KB   
+6/1/2023 1.23 KB  
 QmUrZF3bAyCSrjhNRvY6TcoDqk3mFyWrPhSy3xPyykD4w2
 
 the_lion_and_the_mouse_1.png
@@ -217,10 +198,13 @@ the_lion_and_the_mouse_1.png
 QmdqfLpCCyEX483LHxCnwoED4cYhG5QD3dkmTNCAFsrfwV
 
 ---
+
 ## Title: The Lion and the Mouse
+
 ### Moral: A kindness is never wasted.
 
 > "A Lion lay asleep in the forest, his great head resting on his paws.",
+
         "A timid little Mouse came upon him unexpectedly, and in her fright and haste to get away, ran across the Lion's nose.", "Roused from his nap, the Lion laid his huge paw angrily on the tiny creature to kill her.",
         "Spare me!, begged the poor Mouse, Please let me go and some day I will surely repay you.",
         "The Lion was much amused to think that a Mouse could ever help him.",
@@ -232,13 +216,16 @@ QmdqfLpCCyEX483LHxCnwoED4cYhG5QD3dkmTNCAFsrfwV
         "You laughed when I said I would repay you, said the Mouse.",
         "Now you see that even a Mouse can help a Lion."
 
-![The Lion and the Mouse](./images/the_lion_and_the_mouse.png)
+![The Lion and the Mouse](<Images2/The%20Lion%20and%20the%20Mouse%20(quartet).png>)
 
 ---
- ## Title: The Plane Tress
- ### Moral: Our best blessings are often the least appreciated. 
 
- >  "Two Travellers, walking in the noonday sun, sought the shade of a widespreading tree to rest.",
+## Title: The Plane Tress
+
+### Moral: Our best blessings are often the least appreciated.
+
+> "Two Travellers, walking in the noonday sun, sought the shade of a widespreading tree to rest.",
+
         "As they lay looking up among the pleasant leaves, they saw that it was a Plane Tree.",
         "How useless is the Plane!, said one of them.",
         "It bears no fruit whatever, and only serves to litter the ground with leaves.",
@@ -246,14 +233,16 @@ QmdqfLpCCyEX483LHxCnwoED4cYhG5QD3dkmTNCAFsrfwV
         "You lie here in my cooling shade, and yet you say I am useless!",
         "Thus ungratefully, O Jupiter, do men receive their blessings!"
 
-![The PLane Tree](./images/the_plane_tree.png)
+![The Plane Tree](<Images2/The%20Plane%20Tree(quartet).png>)
 
 ---
 
 ## Title: The Frogs Who Wished for a King
+
 ### Moral: Be sure you can better your condition before you seek to change.
 
 > "The Frogs were tired of governing themselves.",
+
         "They had so much freedom that it had spoiled them, and they did nothing but sit around croaking in a bored manner and wishing for a government that could entertain them with the pomp and display of royalty, and rule them in a way to make them know they were being ruled.",
         "No milk and water government for them, they declared.",
         "So they sent a petition to Jupiter asking for a king.",
@@ -268,5 +257,4 @@ QmdqfLpCCyEX483LHxCnwoED4cYhG5QD3dkmTNCAFsrfwV
         "How now!, cried Jupiter Are you not yet content?",
         "You have what you asked for and so you have only yourselves to blame for your misfortunes."
 
-![The Frogs Who Wished for a King](./images/frog_king.png)
-      
+![The Frogs Who Wished for a King](<Images2/The%20Frog%20King(quartet).png>)
