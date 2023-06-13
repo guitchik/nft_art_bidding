@@ -132,6 +132,13 @@ Moreover, our project emphasizes the significance of trust and security in finte
 
 Our developed DApp on the Ethereum blockchain showcases the power of blockchain smart contracts for NFT auctions. This success opens up exciting possibilities for the future. One potential avenue is to expand the concept and launch a full-fledged NFT marketplace. By incorporating additional auction features and leveraging the strength of blockchain technology, we can create a dynamic and thriving marketplace for artists and collectors.
 
+We also plan on participating in the Sui x Kucoin Summer Hackation as a team as well to further our development skills.
+
+### CHALLENGES
+
+1. Integrating streamlit live site versus local site can run into additional integration effort when coordinating with Remix.
+2. Ganache and Remix sync up issues need to be factored for testing.
+
 ---
 
 ## Appendix A
